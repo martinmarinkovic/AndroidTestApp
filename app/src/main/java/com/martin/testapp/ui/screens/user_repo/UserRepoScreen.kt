@@ -39,12 +39,10 @@ private fun UserRepoScreenContent(
 ) {
     when(userRepoUiState) {
         is UserRepoUiState.Loading -> DefaultLoadingScreen()
-        is UserRepoUiState.Successful -> {
-            SuccessfulStateScreenContent(
-                userRepos = userRepoUiState.userRepos,
-                navController = navController
-            )
-        }
+        is UserRepoUiState.Successful -> SuccessfulStateScreenContent(
+            userRepos = userRepoUiState.userRepos,
+            navController = navController
+        )
         is UserRepoUiState.Error -> DefaultErrorScreen(errorMessage = stringResource(id = R.string.error_message))
     }
 }

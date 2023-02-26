@@ -84,9 +84,7 @@ private fun RepoDetailsHeader(
             ) {
                 UserDetailsContent(repoDetails = repoDetails)
             }
-            Row(
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            ) {
+            Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
                 RepoDetailsContent(repoDetails = repoDetails)
             }
         }

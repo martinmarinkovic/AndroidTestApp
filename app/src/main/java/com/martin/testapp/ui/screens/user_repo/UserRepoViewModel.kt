@@ -16,9 +16,7 @@ class UserRepoViewModel @Inject constructor(
     private val getUserReposUseCase: GetUserReposUseCase
 ) : ViewModel() {
 
-    private val _userRepoUIState: MutableStateFlow<UserRepoUiState> = MutableStateFlow(
-        UserRepoUiState.Loading
-    )
+    private val _userRepoUIState: MutableStateFlow<UserRepoUiState> = MutableStateFlow(UserRepoUiState.Loading)
     val userRepoUIState: StateFlow<UserRepoUiState> = _userRepoUIState.asStateFlow()
 
     private fun getUserRepos() {
@@ -26,8 +24,7 @@ class UserRepoViewModel @Inject constructor(
             getUserReposUseCase().collect { result ->
                 when(result) {
                     is Loading -> _userRepoUIState.value = UserRepoUiState.Loading
-                    is Success -> _userRepoUIState.value =
-                        UserRepoUiState.Successful(userRepos = result.data)
+                    is Success -> _userRepoUIState.value = UserRepoUiState.Successful(userRepos = result.data)
                     is Error -> _userRepoUIState.value = UserRepoUiState.Error
                 }
             }
